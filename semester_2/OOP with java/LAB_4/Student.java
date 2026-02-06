@@ -1,4 +1,4 @@
-class Student{
+public class Student{
 
 	private String name;
 	private int studentId;
@@ -38,16 +38,47 @@ class Student{
 		System.out.println("Student Id: " + studentId);
 		System.out.println("GPA: " + gpa +"\n");
 	}
-	public static void main(){
-		Student s1= new Student();
-		Student s2 = new Student("kamran",1,3.2);
-		s1.displayInfo();
-		s2.displayInfo();
 
-		s1.setName("Jane Smith");
-        s1.setStudentId(12346);
-        s1.setGpa(3.90);
-        s1.displayInfo();
-		
+	// Task 2
+	char calculateGrade(){
+		if(this.gpa>=3.7) return 'A';
+		else if(this.gpa>=3) return 'B';
+		else if(this.gpa>=2) return 'C';
+		else if(this.gpa>=1) return 'D';
+		else return 'F';
 	}
+	boolean isHonorStudent(){
+		 return (this.gpa>=3.5) ? true : false;
+	}
+	void updateGPA(double newGPA){
+		if(newGPA>=0.0 && newGPA<=4.0){
+			this.gpa = newGPA;
+		}
+	}
+	String getStatus(){
+		if(this.gpa>=3.7) 
+			return "Excellent";
+		else if(this.gpa>=3) 
+			return "Good";
+		else if(this.gpa>=2) 
+			return "Average";
+		else if(this.gpa>=1) 
+			return "Need improment";
+
+		return "Fail";
+		
+}
+}
+class Main {
+    public static void main(String[] args) {
+        Student s1 = new Student("John Doe", 12345, 3.75);
+        Student s2 = new Student("Jane Smith", 12346, 2.50);
+        
+        System.out.println("Grade: " + s1.calculateGrade());
+        System.out.println("Is Honor Student: " + s1.isHonorStudent());
+        System.out.println("Status: " + s1.getStatus());
+        
+        s2.updateGPA(3.90);
+        s2.displayInfo();
+    }
 }
