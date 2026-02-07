@@ -66,11 +66,47 @@ public class Student{
 			return "Need improment";
 
 		return "Fail";
-		
+
 }
+	// Task 3
+	
+	String formatName(){
+        int ind = this.name.indexOf(" ");
+        String first = name.substring(0,ind);
+        String last = name.substring(ind+1,name.length());
+        return last + ", " + first;
+	}
+	String getInitials(){
+		int ind = this.name.indexOf(" ");
+        String first = name.substring(0,ind);
+        String last = name.substring(ind+1,name.length());
+
+        String firstInitial = Character.toString(first.charAt(0));
+        String lastInitial = Character.toString(last.charAt(0));
+
+        return firstInitial+lastInitial;
+	}
+	boolean validateName(){
+		int len = this.name.length();
+		String n = name.toLowerCase();
+		for(int i=0;i<len;i++){
+			if (!(((int)n.charAt(i) >= 97 && (int)n.charAt(i) <= 122) || (int)n.charAt(i) == 32)) return false;
+		}
+		return true;
+	}
+	String[] getStudentInfoArray(){
+		String[] arr = {this.name,Integer.toString(this.studentId),Double.toString(this.gpa)};
+		return arr;
+	}
+	void displayFormattedInfo(){
+		System.out.println("======== Formatted Student info ========");
+		System.out.printf("Name: %s | Student Id: %d | GPA: %.2f",name,studentId,gpa);
+	}
 }
 class Main {
     public static void main(String[] args) {
+    		// Task 2
+        /*
         Student s1 = new Student("John Doe", 12345, 3.75);
         Student s2 = new Student("Jane Smith", 12346, 2.50);
         
@@ -80,5 +116,19 @@ class Main {
         
         s2.updateGPA(3.90);
         s2.displayInfo();
+        */
+
+        // Task 3
+        
+        Student s1 = new Student("Kamran Gul", 12345, 3.75);
+        System.out.println("Formatted Name: " + s1.formatName());
+        System.out.println("Initials: " + s1.getInitials());
+        System.out.println("Valid Name: " + s1.validateName());
+        String[] info = s1.getStudentInfoArray();
+        for (String data : info) {
+            System.out.println(data);
+        }
+        s1.displayFormattedInfo();
     }
-}
+
+    }
