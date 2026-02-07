@@ -102,6 +102,46 @@ public class Student{
 		System.out.println("======== Formatted Student info ========");
 		System.out.printf("Name: %s | Student Id: %d | GPA: %.2f",name,studentId,gpa);
 	}
+
+	// Task 4
+
+	double processGPAs(double[] gpas){
+		double highestGpa = 1;
+		for(double i : gpas){
+			if(i>4.0){
+				break;
+			}
+			else if(i<1.0){
+				continue;
+			}
+			else if(i>highestGpa){
+				highestGpa = i;
+			}
+		}
+		return highestGpa;
+	}
+	double calculateAverage(double[] grades){
+		double sum = 0;
+		int length = grades.length;
+		for(double i : grades){
+			sum+=i;
+		}
+		return sum/length;
+	}
+	boolean findGradeInArray(char[] grades, char target){
+		for(char i : grades){
+			if(i==target){
+				return true;
+			}
+		}
+	return false;
+	}
+	int[] modifyArray(int[] numbers){
+		for(int i : numbers){
+			i = i*2;
+		}
+	return numbers;
+	}
 }
 class Main {
     public static void main(String[] args) {
@@ -119,7 +159,7 @@ class Main {
         */
 
         // Task 3
-        
+        /*
         Student s1 = new Student("Kamran Gul", 12345, 3.75);
         System.out.println("Formatted Name: " + s1.formatName());
         System.out.println("Initials: " + s1.getInitials());
@@ -129,6 +169,31 @@ class Main {
             System.out.println(data);
         }
         s1.displayFormattedInfo();
+        */
+
+        // Task 4
+
+    	Student s1 = new Student("John Doe", 12345, 3.75);
+        
+        double[] gpas = {3.5, 2.8, 3.9, 0.5};
+
+        double highest = s1.processGPAs(gpas);
+        System.out.println("Highest GPA: " + highest);
+        
+        double[] grades = {85.0, 90.0, 78.0, 92.0};
+        double avg = s1.calculateAverage(grades);
+        System.out.println("Average: " + avg);
+        
+        char[] gradeList = {'A', 'B', 'C', 'A', 'B'};
+        boolean found = s1.findGradeInArray(gradeList, 'A');
+        System.out.println("Grade A found: " + found);
+        
+        int[] nums = {1, 2, 3, 4, 5};
+        s1.modifyArray(nums);
+        for (int num : nums) {
+            System.out.print(num + " ");
+        }
+
     }
 
     }
