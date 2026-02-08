@@ -186,10 +186,71 @@ class Student{
 		}
 		return sum/4.0;
 	}
+
+	// Task 6
+	int[][] createUnevenArray(){
+		int[][] array;
+		// array[0] = new int[2];
+		// array[1] = new int [4];
+		// array[2] = new int[3];
+		array = new int[][]{
+		{0,1},
+		{2,3,4,5},
+		{6,7,8}
+	};
+	return array;
+	}
+	void displayUnevenArray(int[][] arr){
+		for(int i=0; i<arr.length;i++){
+			System.out.printf("Row %d: ",i+1);
+			for(int j=0; j<arr[i].length;j++){
+				System.out.print(arr[i][j] + " ");
+			}
+			System.out.print("\n");
+		}
+	}
+	String[] convertTypes(){
+		int a = 5;
+		double b = 3.14;
+		char c = 'K';
+
+		double con_a = a;
+		int con_b = (int)b;
+		int con_c = (int)c;
+
+		String[] str = {String.valueOf(con_a),String.valueOf(con_b),String.valueOf(con_c)};
+		return str;
+	}
+	String demonstrateTypePromotion(){
+		byte a = 1;
+		short b = 2;
+		int c = 3;
+		long res1 = a+b+c;
+
+		float d = 3.14f;
+		double res2 = c+d;
+
+		return String.valueOf(res1) + String.valueOf(res2);
+	}
+	
 }
 class Main {
     public static void main(String[] args) {
-    		// Task 2
+    	//Task 1
+    	/*
+    	Student s1 = new Student();
+        Student s2 = new Student("John Doe", 12345, 3.75);
+        
+        s1.displayInfo();
+        s2.displayInfo();
+        
+        s1.setName("Jane Smith");
+        s1.setStudentId(12346);
+        s1.setGpa(3.90);
+        s1.displayInfo();
+		*/
+
+    	// Task 2
         /*
         Student s1 = new Student("John Doe", 12345, 3.75);
         Student s2 = new Student("Jane Smith", 12346, 2.50);
@@ -240,7 +301,7 @@ class Main {
 		*/
 
 		// Task 5
-    	
+    	/*
         Student s1 = new Student("John Doe", 12345, 3.75);
         
         // Method overloading
@@ -258,6 +319,47 @@ class Main {
         
         double rowAvg = s1.calculateRowAverage(grades, 0);
         System.out.println("Row 0 average: " + rowAvg);
+		*/
+
+		//Task 6
+
+		Student s1 = new Student("John Doe", 12345, 3.75);
+        Student s2 = new Student("Jane Smith", 12346, 3.90);
+        
+        // Display complete information
+        // System.out.println("=== Student 1 ===");
+        // System.out.println(s1.completeStudentReport());
+        
+        // System.out.println("\n=== Student 2 ===");
+        // System.out.println(s2.completeStudentReport());
+        
+        // Demonstrate uneven arrays
+        int[][] uneven = s1.createUnevenArray();
+        System.out.println("Uneven Array: ");
+        s1.displayUnevenArray(uneven);
+        
+        // // Demonstrate type conversion
+        System.out.println("\nType Conversion results: ");
+        String[] conversions = s1.convertTypes();
+        for (String conv : conversions) {
+            System.out.print(conv + " ");
+        }
+        
+        // Demonstrate type promotion
+        System.out.println("\n\nType Promotion results: ");
+        String promotion = s1.demonstrateTypePromotion();
+        System.out.println(promotion);
+        
+        // Array operations
+        double[] gpas = {3.5, 3.8, 2.9, 3.95};
+        double highest = s1.processGPAs(gpas);
+        System.out.println("\nHighest GPA from array: " + highest);
+        
+        // // Method overloading demonstration
+        System.out.println("\nOverloaded methods:");
+        System.out.println(s1.calculateTotal(10, 20));
+        System.out.println(s1.calculateTotal(10.5, 20.5));
+        System.out.println(s1.calculateTotal(10, 20, 30));
     }
 
-    }
+}
