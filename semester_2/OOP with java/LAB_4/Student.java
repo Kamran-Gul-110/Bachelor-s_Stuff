@@ -1,4 +1,4 @@
-public class Student{
+class Student{
 
 	private String name;
 	private int studentId;
@@ -142,6 +142,50 @@ public class Student{
 		}
 	return numbers;
 	}
+
+	// Task 5
+
+	int calculateTotal(int a, int b){
+		return a+b;
+	}
+	double calculateTotal(double a,double b){
+		return a+b;
+	}
+	int calculateTotal(int a, int b, int c){
+		return a+b+c;
+	}
+	int process2DArray(int[][] matrix){
+		int max = matrix[0][0];
+		for(int i=0;i<3;i++){
+			for(int j=0;j<3;j++){
+				if(matrix[i][j]>max){
+					max = matrix[i][j];
+				}
+			}
+		}
+		return max;
+	}
+	int[][] getStudentGrades2D(){
+		int[][] grades = {{10,20,30,40},{50,60,70,80},{90,100,10,20}};
+		return grades;
+	}
+	void displayGradeTable(int[][] grades){
+		System.out.println("Grade Table: ");
+		for(int i=0;i<3;i++){
+			System.out.printf("Student %d: ",i+1);
+			for(int j=0;j<4;j++){
+				System.out.print(grades[i][j] + " ");
+			}
+			System.out.print("\n");
+		}
+	}
+	double calculateRowAverage(int[][] grades, int row){
+		int sum = 0;
+		for(int i=0;i<4;i++){
+			sum += grades[row][i];
+		}
+		return sum/4.0;
+	}
 }
 class Main {
     public static void main(String[] args) {
@@ -172,7 +216,7 @@ class Main {
         */
 
         // Task 4
-
+    	/*
     	Student s1 = new Student("John Doe", 12345, 3.75);
         
         double[] gpas = {3.5, 2.8, 3.9, 0.5};
@@ -193,7 +237,27 @@ class Main {
         for (int num : nums) {
             System.out.print(num + " ");
         }
+		*/
 
+		// Task 5
+    	
+        Student s1 = new Student("John Doe", 12345, 3.75);
+        
+        // Method overloading
+        System.out.println("Sum (int): " + s1.calculateTotal(5, 3));
+        System.out.println("Sum (double): " + s1.calculateTotal(5.5, 3.2));
+        System.out.println("Sum (3 ints): " + s1.calculateTotal(5, 3, 2));
+        
+        // 2D Array
+        int[][] matrix = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+        int max = s1.process2DArray(matrix);
+        System.out.println("Max value: " + max);
+        
+        int[][] grades = s1.getStudentGrades2D();
+        s1.displayGradeTable(grades);
+        
+        double rowAvg = s1.calculateRowAverage(grades, 0);
+        System.out.println("Row 0 average: " + rowAvg);
     }
 
     }
