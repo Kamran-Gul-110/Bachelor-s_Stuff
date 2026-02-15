@@ -8,6 +8,7 @@ class Calculator{
 	Calculator(double result){
 		this.result = result;
 	}
+	
 	int add(int a,int b){
 		return a+b;
 	}
@@ -30,13 +31,32 @@ class Calculator{
 		this.result = 0;
 	}
 
+	// Task 2
+	boolean compare(Calculator other){
+		return (this.result > other.result) ? true : false;
+	}
+	Calculator addResult(Calculator other){
+		Calculator calc = new Calculator();
+
+		calc.result = this.result + other.result;
+		return calc;
+	}
+	Calculator createCopy(){
+		Calculator calc = new Calculator();
+		calc.result = this.result;
+		return calc;
+	}
+	boolean isEqual(Calculator other){
+		return (this.result == other.result) ? true : false;
+	}
 }
 
 class Main {
     public static void main(String[] args) {
-        Calculator calc1 = new Calculator();
+    	// Task 1
+        Calculator calc1 = new Calculator(15.78);
         Calculator calc2 = new Calculator(10.5);
-        
+        /*
         System.out.print("\nAdding integer (a,b): ");
         System.out.println(calc2.add(2,3));
 
@@ -54,6 +74,18 @@ class Main {
 
         System.out.print("\n\nResult: ");
         System.out.print(calc2.getResult() + "\n\n");
+        */
+
+        // Task 2
+
+        System.out.print("\nResult of 1 is > 2: "+calc1.compare(calc2));
+        Calculator results = calc1.addResult(calc2);
+        System.out.print("\n\nResult 1 + Result 2 = "+ results.getResult());
+        Calculator calc3 = calc1.createCopy();
+        System.out.println("\n\nCopied result: "+calc3.getResult());
+        boolean result = calc2.isEqual(calc1);
+        System.out.println("\nIs result equal: "+result);
+
 
 
 
