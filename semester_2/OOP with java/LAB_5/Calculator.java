@@ -109,6 +109,54 @@ class Calculator{
 	static int indexOf(String str,char c){
 		return str.indexOf(c);
 	}
+
+	// Task 6
+	int addMultiple(int... numbers){
+		int result = 0;
+		for(int a: numbers){
+			result += a;
+		}
+		return result;
+	}
+	int multiplyMultiple(int... numbers){
+		int result = 1;
+		for(int a: numbers){
+			result *= a;
+		}
+		return result;
+	}
+	int findMax(int... numbers){
+		int max = numbers[0];
+		for(int a: numbers){
+			if(a>max){
+				max = a;
+			}
+		}
+		return max;
+	}
+	int findMin(int... numbers){
+		int min = numbers[0];
+		for(int a: numbers){
+			if(a<min){
+				min = a;
+			}
+		}
+		return min;
+	}
+	void processCommandLine(String[] args){
+		int[] arr = new int[args.length];
+		for(int i=0;i<args.length;i++){
+			arr[i] = Integer.parseInt(args[i]);
+		}
+
+		System.out.println("Sum => " + addMultiple(arr));
+
+    	System.out.println("Product => " + multiplyMultiple(arr));
+    	System.out.println("Maximum => " + findMax(arr));
+    	System.out.println("Minimum => " + findMin(arr));
+	}
+
+
 }
 
 class Main {
@@ -158,6 +206,7 @@ class Main {
 		*/
 
     	// Task 4
+    	/*
     	Calculator calc1 = new Calculator(15.78);
     	calc1.validateResult();
 
@@ -178,7 +227,21 @@ class Main {
     	System.out.print(Calculator.charAt("Kamran",5));
     	System.out.print("\nIndex of Character m => ");
     	System.out.print(Calculator.indexOf("kamran",'m'));
+		*/
 
-
+    	// Task 6
+    	Calculator calc1 = new Calculator(15.78);
+    	if(args.length>0){
+    		System.out.println("\n.....Command line arguments.....");
+    		calc1.processCommandLine(args);
+    	}
+    	else{
+    	System.out.println("\n.....Normal Arguments.....");
+    	System.out.println("Sum of 3,5 => " + calc1.addMultiple(3,5));
+    	System.out.println("Sum of 4,5,6 => " + calc1.addMultiple(4,5,6));
+    	System.out.println("Product of 3,5 => " + calc1.multiplyMultiple(3,5));
+    	System.out.println("Product of 4,5,6 => " + calc1.multiplyMultiple(4,5,6));
+    	}
+    	
     }
 }
