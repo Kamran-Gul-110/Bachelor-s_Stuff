@@ -74,11 +74,47 @@ class Calculator{
 		return str;
 	}
 
+	// Task 4
+	static final double MAX_RESULT= 1000000;
+	final String calculatorId="";
+	void validateResult(){
+		if(this.result > MAX_RESULT){
+			System.out.println("\nResult exceeded max result");
+		}
+		else 
+			System.out.println("\nResult is valid");
+	}
+	String formatResult(){
+		String str = String.format("Your result is: %.2f",this.result);
+		return str;
+	}
+	int parseAndCalculate(String str){
+		int a = Integer.parseInt(str.substring(0,1));
+		int b = Integer.parseInt(str.substring(2,str.length()));
+		return a + b;
+	}
+
+	static boolean equals(String str1,String str2){
+		if(str1.equals(str2)){
+			return true;
+		}
+		return false;
+	}
+	static int length(String str){
+		return str.length();
+	}
+	static char charAt(String str,int a){
+		return str.charAt(a);
+	}
+	static int indexOf(String str,char c){
+		return str.indexOf(c);
+	}
 }
 
 class Main {
     public static void main(String[] args) {
     	// Task 1
+    	/*
         Calculator calc1 = new Calculator(15.78);
         Calculator calc2 = new Calculator(10.5);
         
@@ -99,7 +135,7 @@ class Main {
 
         System.out.print("\n\nResult: ");
         System.out.print(calc2.getResult() + "\n\n");
-        
+        */
 
         // Task 2
         /*
@@ -113,11 +149,35 @@ class Main {
 	    */
 
 	    // Task 3
+	    /*
         int operationCount = calc2.getOperationCount();
         System.out.printf("\nThere are %d operations performed overall\n",operationCount);
 
         String getInternalState = calc2.getInternalState();
         System.out.print("Internal state: " + getInternalState);
+		*/
+
+    	// Task 4
+    	Calculator calc1 = new Calculator(15.78);
+    	calc1.validateResult();
+
+    	System.out.print("Formatted Result =>   ");
+    	String str = calc1.formatResult();
+    	System.out.println(str);
+
+    	System.out.print("Result of parsing string ('2+3') =>  ");
+    	String s = "3+2";
+    	int result = calc1.parseAndCalculate(s);
+    	System.out.print(result);
+
+    	System.out.print("\nLength of String => ");
+    	System.out.print(Calculator.length("What is your name?"));
+    	System.out.print("\nIs Strings equal? => ");
+    	System.out.print(Calculator.equals("kamran","kamran"));
+    	System.out.print("\nCharacter at index 5 => ");
+    	System.out.print(Calculator.charAt("Kamran",5));
+    	System.out.print("\nIndex of Character m => ");
+    	System.out.print(Calculator.indexOf("kamran",'m'));
 
 
     }
