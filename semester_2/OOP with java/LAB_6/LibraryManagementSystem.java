@@ -67,6 +67,8 @@ class Library{
 			System.out.println("\nThe book is over due");
 		}
 		else 
-			System.out.print("\nThe book is not over due");
+			System.out.println("\nThe book is not over due");
+		
+		System.out.printf("Total Fine: %.2f$",lib.calculateFine());
 	}
 }
