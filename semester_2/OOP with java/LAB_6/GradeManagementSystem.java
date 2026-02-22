@@ -9,19 +9,6 @@ class GradeManager{
 		this.studentId = studentId;
 		this.subjectNames = subjectNames;
 	}
-	// void setSubjectGrades(){
-	// 	subjectGrades[0][0] = 1;
-    //     subjectGrades[0][1] = 80;
-    //     subjectGrades[0][2] = 40;
-
-    //     subjectGrades[1][0] = 2;
-    //     subjectGrades[1][1] = 76;
-    //     subjectGrades[1][2] = 92;
-
-    //     subjectGrades[2][0] = 3;
-    //     subjectGrades[2][1] = 70;
-    //     subjectGrades[2][2] = 95;
-	// }
 	void addGrade(String name, double[] grades){
 		for(int i=0;i<subjectGrades.length;i++){
 			if(subjectNames[i].equals(name)){
@@ -122,6 +109,7 @@ class Main{
 		std1.getReport();
 
 		System.out.println("\nx-x-x-x-x-x-x-x-x-x-x-x-x");
+		
 		GradeManager std2 = new GradeManager("Ali","123",arr);
 		std2.addGrade("M", new double[]{9.4,9.1,9.9});
 		std2.addGrade("P", new double[]{90.5,8.3,8.7});
